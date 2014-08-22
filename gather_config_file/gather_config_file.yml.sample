@@ -1,0 +1,8 @@
+dest_dir: /tmp/configs
+
+gather_target_files:
+    - /tmp/test
+    - /tmp/test2
+
+gather_target_dirs:
+    - /tmp/test_dir
