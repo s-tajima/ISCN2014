@@ -1,0 +1,2 @@
+:measure_command: sh /tmp/measure.sh
+:config_dir: /tmp/configs
