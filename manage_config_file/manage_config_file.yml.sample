@@ -1,8 +1,9 @@
-dest_dir: /tmp/configs
+:dest_dir: /tmp/configs
 
-gather_target_files:
-    - /tmp/test
+:targets:
+    - /tmp/test1
     - /tmp/test2
+    - /tmp/test3
+    - /tmp/test4
 
-gather_target_dirs:
-    - /tmp/test_dir
+:gitrepo: git@github.com:s-tajima/XXX.git
