@@ -11,9 +11,23 @@ unless File.exists?("#{configs[:config_dir]}/.git")
   exit 1
 end
 
+Dir.chdir(configs[:config_dir])
+
+configs[:before_commands].each do |command|
+  puts `#{command}`
+end
+
 puts result = `#{configs[:measure_command]}`
 
-Dir.chdir(configs[:config_dir])
+configs[:after_commands].each do |command|
+  puts `#{command}`
+end
+
+Dir.mkdir("./gather_files/") unless Dir.exists?("./gather_files/")
+configs[:gather_target].each do |target|
+  puts `cp -r #{target} #{configs[:config_dir]}/gather_files/`
+end
+
 `git add -A`
 `git commit -m "#{result}"`
 `git push`
