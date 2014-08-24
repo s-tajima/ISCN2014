@@ -17,7 +17,7 @@ configs[:before_commands].each do |command|
   puts `#{command}`
 end
 
-puts result = `#{configs[:measure_command]}`
+result = `#{configs[:measure_command]}`
 
 configs[:after_commands].each do |command|
   puts `#{command}`
@@ -29,6 +29,5 @@ configs[:gather_target].each do |target|
 end
 
 `git add -A`
-`git commit -m "#{result}"`
-`git push`
+`git commit -m '#{result}'`
 
