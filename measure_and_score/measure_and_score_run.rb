@@ -1,5 +1,6 @@
 require 'pp'
 require 'yaml'
+require 'fileutils'
 
 config_yaml = ARGV.shift
 config_yaml ||= "./measure_and_score.yml"
@@ -24,6 +25,7 @@ configs[:after_commands].each do |command|
 end
 
 Dir.mkdir("./gather_files/") unless Dir.exists?("./gather_files/")
+FileUtils.rm(Dir.glob("./gather_files/*"))
 configs[:gather_target].each do |target|
   puts `cp -r #{target} #{configs[:config_dir]}/gather_files/`
 end
