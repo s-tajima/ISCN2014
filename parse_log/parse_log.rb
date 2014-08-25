@@ -16,8 +16,8 @@ while log = logs.gets
     label_val[label]  = record[label] 
   end
 
-  val_join = label_val.values.join
-  hash = Digest::MD5.hexdigest(label_val.values.join(" ")) 
+  val_join = label_val.values.join(" ")
+  hash = Digest::MD5.hexdigest(val_join) 
 
   results["#{hash}"]           = label_val if results["#{hash}"].nil?
   results["#{hash}"]['count']  = 0         if results["#{hash}"]['count'].nil?
@@ -26,7 +26,7 @@ end
 
 results.each do |hash, result|
   labels.each do |label|
-    print result[label]
+    print "#{result[label]} "
   end
   puts ": #{result['count']}"
 end
