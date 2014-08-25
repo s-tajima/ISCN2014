@@ -1,0 +1,7 @@
+:dest_dir: /tmp/configs
+
+:targets:
+    - /etc/nginx
+    - /etc/my.cnf
+
+:gitrepo: git@github.com:s-tajima/ISCN2014.git
