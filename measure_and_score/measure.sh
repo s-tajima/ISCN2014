@@ -2,7 +2,7 @@
 
 if [ `whoami` == 'root' ]; then exit 1; fi
 
-CONFIGDIR=/var/work/configs
+. env.sh
 
 cd ${CONFIGDIR}
 

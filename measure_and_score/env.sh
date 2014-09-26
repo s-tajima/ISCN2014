@@ -1,0 +1,1 @@
+CONFIGDIR=/var/work/configs
