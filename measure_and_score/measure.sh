@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-#if [ `whoami` == 'root' ]; then exit 1; fi
+if [ `whoami` == 'root' ]; then exit 1; fi
 
 . env.sh
 
@@ -22,10 +22,13 @@ sudo /etc/init.d/mysqld restart
 
 RESULT=`sh /tmp/measure.sh`
 
-sudo rm -rf ${CONFIGDIR}/files/*
-sudo cp -ar /var/log/nginx/access.log ${CONFIGDIR}/files
-sudo cp -ar /var/log/nginx/error.log  ${CONFIGDIR}/files
-sudo cp -ar /var/log/mysqld.log       ${CONFIGDIR}/files
+DATETIME=`date '+%Y-%m-%d_%H%M%S'`
 
-git add -A
-git commit -m "fin. ${RESULT}"
+cd ${CONFIGDIR}
+sudo mkdir -p ${CONFIGDIR}/files/${DATETIME}
+sudo cp -ar /var/log/nginx/access.log ${CONFIGDIR}/files/${DATETIME}
+sudo cp -ar /var/log/nginx/error.log  ${CONFIGDIR}/files/${DATETIME}
+sudo cp -ar /var/log/mysqld.log       ${CONFIGDIR}/files/${DATETIME}
+
+sudo git add -A
+sudo git commit -m "fin. ${RESULT}"
